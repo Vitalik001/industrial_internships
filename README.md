@@ -1,3 +1,3 @@
 # industrial_internships
 
-All neccesary explanations are in report.pdf
+All necessary explanations are in report.pdf
