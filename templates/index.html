@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Forms</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+
+<h1>Industrial internships</h1>
+<!-- Navigation Bar -->
+
+<ul id="Navigation" class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#form1">View Students</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form2">Add Student</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form3">Delete Student</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form4">Modify Student</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form5">View Companies</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form6">Add Company</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form7">Delete Company</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form8">Modify Company</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form9">View Internships</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form10">Add Internship</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form11">Delete Internship</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form12">View Application</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form13">Add Application</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form14">Delete Application</a>
+        </li>
+    </ul>
+
+
+<div id="output_section">
+    {% block output %}{% endblock %}
+</div>
+
+<div id="error_section">
+    {% block error %}{% endblock %}
+</div>
+
+<div style = "display: flex; justify-content: space-between">
+
+<div>
+
+<form id="form1" method="post" action="/students">
+    <button type="submit" class="btn btn-primary">View students</button>
+</form>
+</div>
+
+<div>
+    <h1>add student</h1>
+    <form  id="form2" method="post" action="/add-student">
+        <div class="form-student">
+            <label for="name">name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-student">
+            <label for="surname">surname</label>
+            <input type="text" class="form-control" id="surname" name="surname" required>
+        </div>
+        <div class="form-student">
+            <label for="login">login</label>
+            <input type="text" class="form-control" id="login" name="login" required>
+        </div>
+        <div class="form-student">
+            <label for="email">email</label>
+            <input type="text" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-student">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div class="form-student">
+            <label for="personal_information">personal information</label>
+            <input type="text" class="form-control" id="personal_information" name="personal_information" required>
+        </div>
+        <div class="form-student">
+            <label for="education_details">education</label>
+            <input type="text" class="form-control" id="education_details" name="education_details" required>
+        </div>
+        <button type="submit" class="btn btn-primary">create student</button>
+    </form>
+</div>
+
+<div>
+    <h1>Delete student</h1>
+    <form  id="form3" method="post" action="/delete-student">
+        <div class="form-student">
+            <label for="login-del">login</label>
+            <input type="text" class="form-control" id="login-del" name="login" required>
+        </div>
+        <button type="submit" class="btn btn-primary">delete student</button>
+    </form>
+</div>
+
+
+<div>
+    <h1>modify student</h1>
+    <form  id="form4" method="post" action="/modify-student">
+        <div class="form-student">
+            <label for="name">name</label>
+            <input type="text" class="form-control" id="name-modify" name="name" required>
+        </div>
+        <div class="form-student">
+            <label for="surname">surname</label>
+            <input type="text" class="form-control" id="surname-modify" name="surname" required>
+        </div>
+        <div class="form-student">
+            <label for="login">login</label>
+            <input type="text" class="form-control" id="login-modify" name="login" required>
+        </div>
+        <div class="form-student">
+            <label for="email">email</label>
+            <input type="text" class="form-control" id="email-modify" name="email" required>
+        </div>
+        <div class="form-student">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" class="form-control" id="phoneNumber-modify" name="phoneNumber" required>
+        </div>
+        <div class="form-student">
+            <label for="personal_information">personal information</label>
+            <input type="text" class="form-control" id="personal_information-modify" name="personal_information" required>
+        </div>
+        <div class="form-student">
+            <label for="education_details">education</label>
+            <input type="text" class="form-control" id="education_details-modify" name="education_details" required>
+        </div>
+        <button type="submit" class="btn btn-primary">modify student</button>
+    </form>
+</div>
+</div>
+
+<div style = "display: flex; justify-content: space-between">
+
+<div>
+
+<form id="form5" method="post" action="/companies">
+    <button type="submit" class="btn btn-primary">View companies</button>
+</form>
+</div>
+
+<div>
+    <h1>add company</h1>
+    <form  id="form6" method="post" action="/add-company">
+        <div class="form-company">
+            <label for="name-company">name</label>
+            <input type="text" class="form-control" id="name-company" name="name" required>
+        </div>
+        <div class="form-company">
+            <label for="town-company">town</label>
+            <input type="text" class="form-control" id="town-company" name="town" required>
+        </div>
+        <div class="form-company">
+            <label for="address-company">address</label>
+            <input type="text" class="form-control" id="address-company" name="address" required>
+        </div>
+        <div class="form-company">
+            <label for="email-company">email</label>
+            <input type="text" class="form-control" id="email-company" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">create company</button>
+    </form>
+</div>
+
+<div>
+    <h1>Delete company</h1>
+    <form  id="form7" method="post" action="/delete-company">
+        <div class="form-company">
+            <label for="id-del">id</label>
+            <input type="number" class="form-control" id="id-del" name="id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">delete company</button>
+    </form>
+</div>
+
+
+<div>
+    <h1>modify company</h1>
+    <form  id="form8" method="post" action="/modify-company">
+        <div class="form-company">
+            <label for="id">id</label>
+            <input type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <div class="form-company">
+            <label for="name">name</label>
+            <input type="text" class="form-control" id="name-mod" name="name" required>
+        </div>
+        <div class="form-company">
+            <label for="town-company-mod">town</label>
+            <input type="text" class="form-control" id="town-company-mod" name="town" required>
+        </div>
+        <div class="form-company">
+            <label for="address-mod">address</label>
+            <input type="text" class="form-control" id="address-mod" name="address" required>
+        </div>
+        <div class="form-company">
+            <label for="email-mod">email</label>
+            <input type="text" class="form-control" id="email-mod" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">modify company</button>
+    </form>
+</div>
+
+</div>
+<form id="form9" method="post" action="/internships">
+    <button type="submit" class="btn btn-primary">View internships</button>
+</form>
+
+<div style = "display: flex; justify-content: space-around">
+
+<div>
+    <h1>add internship</h1>
+    <form  id="form10" method="post" action="/add-internship">
+        <div class="form-internship">
+            <label for="title">title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-internship">
+            <label for="description">description</label>
+            <input type="text" class="form-control" id="description" name="description" required>
+        </div>
+        <div class="form-internship">
+            <label for="start">start</label>
+            <input type="date" class="form-control" id="start" name="start" required>
+        </div>
+        <div class="form-internship">
+            <label for="end">end</label>
+            <input type="date" class="form-control" id="end" name="end" required>
+        </div>
+        <div class="form-internship">
+            <label for="company">company</label>
+            <input type="number" class="form-control" id="company" name="company" required>
+        </div>
+        <button type="submit" class="btn btn-primary">create internship</button>
+    </form>
+</div>
+
+<div>
+    <h1>Delete internship</h1>
+    <form  id="form11" method="post" action="/delete-internship">
+        <div class="form-company">
+            <label for="int-del">id</label>
+            <input type="number" class="form-control" id="int-del" name="id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">delete intenship</button>
+    </form>
+</div>
+
+</div>
+
+<form id="form12" method="post" action="/applications">
+    <button type="submit" class="btn btn-primary">View applications</button>
+</form>
+
+<div style = "display: flex; justify-content: space-around">
+
+<div>
+    <h1>add application</h1>
+    <form  id="form13" method="post" action="/add-application">
+        <div class="form-application">
+            <label for="student">student</label>
+            <input type="text" class="form-control" id="student" name="student" required>
+        </div>
+        <div class="form-application">
+            <label for="submitted">submitted</label>
+            <input type="date" class="form-control" id="submitted" name="submitted" required>
+        </div>
+        <div class="form-application">
+            <label for="internship">internship</label>
+            <input type="number" class="form-control" id="internship" name="internship" required>
+        </div>
+        <div class="form-application">
+            <label for="motivation_letter">motivation_letter</label>
+            <input type="text" class="form-control" id="motivation_letter" name="motivation_letter" required>
+        </div>
+        <div class="form-application">
+            <label for="projects">projects</label>
+            <input type="text" class="form-control" id="projects" name="projects" required>
+        </div>
+        <button type="submit" class="btn btn-primary">apply</button>
+    </form>
+</div>
+
+<div>
+    <h1>Delete application</h1>
+    <form  id="form14" method="post" action="/delete-application">
+        <div class="form-company">
+            <label for="student-del">student</label>
+            <input type="text" class="form-control" id="student-del" name="student" required>
+        </div>
+        <div class="form-company">
+            <label for="inter-del">internship</label>
+            <input type="number" class="form-control" id="inter-del" name="internship" required>
+        </div>
+        <button type="submit" class="btn btn-primary">delete application</button>
+    </form>
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
+

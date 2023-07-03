@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation between Forms</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Hiking App</h1>
+
+
+<div class="container">
+    <ul id="Navigation" class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#form1">Create a Hiker</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form2">Search Hikes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form3">View Guides</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form4">Book a Hike</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form5">Cancel a booking</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#form6">Change a Guide</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="form1">
+
+            <div id="error-message" class="alert alert-danger" style="display: none;">
+                {% block message %}{% endblock %}
+            </div>
+
+            <div id="success-message" class="alert alert-success" style="display: none;">
+                {% block response %}{% endblock %}
+            </div>
+
+
+            <h2>Create a Hiker</h2>
+
+            <form method="post" action="/create-hiker">
+                <div class="form-group">
+                    <label for="login">Login:</label>
+                    <input type="text" class="form-control" id="login" name="login" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth:</label>
+                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Create Hiker</button>
+            </form>
+
+        </div>
+        <div class="tab-pane fade" id="form2">
+            <h2>Search possible Hikes</h2>
+            <form method="post" action="/view-hikes">
+                <div class="form-group">
+                    <label for="hikeName">Hike Name</label>
+                    <input type="text" class="form-control" id="hikeName" name="hikeName" placeholder="Any">
+                </div>
+                <div class="form-group">
+                    <label for="distance">Minimum Distance (km)</label>
+                    <input type="number" class="form-control" id="distance" name="distance" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" name="country">
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="price">Maximum Price</label>
+                    <input type="number" class="form-control" id="price" name="price" min="0">
+                </div>
+                <div class="form-group">
+                    <label for="availability">Availability</label>
+                    <select class="form-control" id="availability" name="availability">
+                        <option value="">Any</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="difficulty">Minimum Difficulty</label>
+                    <select class="form-control" id="difficulty" name="difficulty">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">View Hikes</button>
+            </form>
+
+
+        </div>
+        <div class="tab-pane fade" id="form3">
+            <h2>View possible hiking guides for a chosen hike</h2>
+            <form method="post" action="/view-hiking-guides">
+                <div class="form-group">
+                    <label for="hikeID">Hike ID</label>
+                    <input type="number" class="form-control" id="hikeID" name="hikeID" min="1" required>
+                </div>
+                <button type="submit" class="btn btn-primary">View Hiking Guides</button>
+            </form>
+
+
+        </div>
+        <div class="tab-pane fade" id="form4">
+            <h2>Book a Hike</h2>
+            <form method="post" action="/book-hike">
+                <div class="form-group">
+                    <label for="BookhikerLogin">Hiker Login</label>
+                    <input type="text" class="form-control" id="BookhikerLogin" name="hikerLogin" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hikeID">Hike ID</label>
+                    <input type="number" class="form-control" name="hikeID" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="guideID">Hike Guide ID</label>
+                    <input type="number" class="form-control" id="guideID" name="guideID" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="startingDate">Starting Date</label>
+                    <input type="date" class="form-control" id="startingDate" name="startingDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="nParticipants">Number of Participants</label>
+                    <input type="number" class="form-control" id="nParticipants" name="nParticipants" min="1" required>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Book Hike</button>
+            </form>
+
+
+        </div>
+        <div class="tab-pane fade" id="form5">
+            <h2>Cancel a booking</h2>
+            <form method="post" action="/cancel-booking">
+                <div class="form-group">
+                    <label for="hikeEventID">Hike Event ID</label>
+                    <input type="number" class="form-control" id="hikeEventID" name="hikeEventID" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="hikerLogin">Hiker Login</label>
+                    <input type="text" class="form-control" id="hikerLogin" name="hikerLogin" maxlength="45" required>
+                </div>
+                <button type="submit" class="btn btn-danger">Cancel Booking</button>
+            </form>
+
+        </div>
+
+        <div class="tab-pane fade" id="form6">
+            <h2>Change hiking guide</h2>
+            <form method="post" action="/change-guide">
+                <div class="form-group">
+                    <label for="change_hikeEventID">Hike Event ID</label>
+                    <input type="number" class="form-control" id="change_hikeEventID" name="hikeEventID" min="1"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="change_hikerLogin">Hiker Login</label>
+                    <input type="text" class="form-control" id="change_hikerLogin" name="hikerLogin" maxlength="45"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="change_hikingGuideID">New Hiking Guide ID</label>
+                    <input type="text" class="form-control" id="change_hikingGuideID" name="hikingGuideID"
+                           maxlength="45" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit a change</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    const errEL = document.getElementById('error-message');
+    const respEl = document.getElementById('success-message');
+
+    let has_letter = false;
+    for (let i = 0; i < errEL.textContent.length; i++) {
+        let str = errEL.textContent[i];
+        if (str.length === 1 && str.match(/[a-z]/i)) {
+            has_letter = true;
+            break;
+        }
+    }
+    if (has_letter) {
+        errEL.style.display = 'block';
+    }
+
+    has_letter = false;
+    for (let i = 0; i < respEl.textContent.length; i++) {
+        let str = respEl.textContent[i];
+        if (str.length === 1 && str.match(/[a-z]/i)) {
+            has_letter = true;
+            break;
+        }
+    }
+    if (has_letter) {
+        respEl.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
